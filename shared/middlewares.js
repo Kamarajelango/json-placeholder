@@ -1,4 +1,4 @@
-const IS_MAINTANCE = false;
+
 
 const middlewares = {
     logging(req, res, next) {
@@ -6,7 +6,7 @@ const middlewares = {
         next()
     },
     maintance(req,res,next) {
-        IS_MAINTANCE ? res.send({ message: "Site is under maintanance" }) : next()
+       process.env.IS_MAINTANCE == "true" ? res.send({ message: "Site is under maintanance" }) : next()
     }
 }
 
