@@ -37,7 +37,7 @@ const service = {
             const post = await helper.validate(req.body)
 
             //User Validation
-            const user=await userHelper.postId(post.userId)
+            const user=await userHelper.findById(post.userId)
             if(!user) return res.status(400).send({error:"User Invalid"})
 
             //Insert Data
@@ -58,7 +58,7 @@ const service = {
          if(!oldPost) return res.status(400).send({error:"invalid post"})
 
          //User Validation
-         const user=await userHelper.postId(newPost.userId)
+         const user=await userHelper.findById(newPost.userId)
          if(!user) return res.status(400).send({error:"User Invalid"})
 
          //Update Post
